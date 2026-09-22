@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 """Telegram bot for data-driven SAT Math and IELTS vocabulary practice."""
-
+import os
+os.environ['MPLCONFIGDIR'] = '/tmp/matplotlib'
 import json
 import logging
 import math
