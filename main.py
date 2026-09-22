@@ -37,7 +37,9 @@ from telegram.ext import (
 )
 
 # === ИНИЦИАЛИЗАЦИЯ FLASK ДЛЯ RENDER ===
-from threading import Thread
+import os
+import threading
+from flask import Flask
 
 app = Flask(__name__)
 
@@ -49,13 +51,14 @@ def run_flask():
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
 
-# Запускаем Flask в отдельном потоке
-Thread(target=run_flask, daemon=True).start()
+threading.Thread(target=run_flask, daemon=True).start()
+
 # --- ЛОГИРОВАНИЕ ---
 logging.basicConfig(
     format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
     level=logging.INFO,
 )
+
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("httpcore").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
