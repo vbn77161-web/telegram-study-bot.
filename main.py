@@ -1267,7 +1267,6 @@ def main() -> None:
 
 """Telegram bot for data-driven SAT Math and IELTS vocabulary practice."""
 
-from __future__ import annotations
 
 import json
 import logging
